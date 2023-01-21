@@ -41,9 +41,9 @@ const createCar = async (req, res) => {
 
     try {
         await car.save();
-        res.json({ message: 'Car created successfully' });
+        res.json({ message: 'Car created successfully!' });
     } catch (err) {
-        res.json({ message: 'Car creation failed', error: err });
+        res.json({ message: 'Car creation failed!', error: err });
     }
 };
 
