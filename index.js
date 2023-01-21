@@ -27,9 +27,13 @@ const start = async () => {
                 { GET: '/cars' },
                 { GET: '/cars/:id' },
                 { GET: '/cars/make/:make' },
+                { GET: '/cars/filter/greater/:year'},
+                { GET: '/cars/filter/less/:year'},
+                { GET: '/filter/between/:year1/:year2'},
                 { POST: '/cars' },
                 { PUT: '/cars/:id' },
                 { DELETE: '/cars/:id' },
+
             ] 
         });
     });
