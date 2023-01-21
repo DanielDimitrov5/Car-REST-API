@@ -2,9 +2,11 @@ import express from 'express';
 import mongoose from 'mongoose';
 import carController from './controllers/CarController.js';
 
+import key from './secret.js';
+
 const start = async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/cars', {
+        await mongoose.connect(`mongodb+srv://danieldimitrov:${key}@cluster0.6sxrvdm.mongodb.net/test`, {
             useUnifiedTopology: true,
             useNewUrlParser: true
         });
