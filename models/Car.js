@@ -1,4 +1,4 @@
-const { model, Schema, Types: { ObjectId } } = require('mongoose');
+import { model, Schema } from "mongoose";
 
 const schema = new Schema({
     make: { type: String, required: [true, 'Make is required'] },
@@ -14,4 +14,4 @@ const schema = new Schema({
 
 const Car = model('Car', schema);
 
-module.exports = Car;
+export default Car;

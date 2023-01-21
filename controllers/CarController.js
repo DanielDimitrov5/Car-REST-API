@@ -1,6 +1,6 @@
-const Car = require('../models/Car');
-const { Router } = require('express');
-const _ = require('lodash');
+import Car from '../models/Car.js';
+import { Router } from 'express';
+import _ from 'lodash';
 
 const router = Router();
 
@@ -69,6 +69,35 @@ const deleteCar = async (req, res) => {
     }
 };
 
+const filterCarsByYearGreater = async (req, res) => {
+    const { year } = req.params;
+    try {
+        const car = await Car.find({ year: { $gte: year } });
+        res.json(car);
+    } catch (err) {
+        res.json({ message: 'Cars not found', error: err });
+    }
+};
+    
+const filterCarsByYearLess = async (req, res) => {
+    const { year } = req.params;
+    try {
+        const car = await Car.find({ year: { $lte: year } });
+        res.json(car);
+    } catch (err) {
+        res.json({ message: 'Cars not found', error: err });
+    }
+};
+
+const filterCarsByYearBetween = async (req, res) => {
+    const { year1, year2 } = req.params;
+    try {
+        const car = await Car.find({ year: { $gte: year1, $lte: year2 } });
+        res.json(car);
+    } catch (err) {
+        res.json({ message: 'Cars not found', error: err });
+    }
+};
 
 router.get('/', getAllCars);
 router.get('/:id', getCarById);
@@ -77,4 +106,8 @@ router.post('/create', createCar);
 router.put('/update/:id', updateCar);
 router.delete('/delete/:id', deleteCar);
 
-module.exports = router;
+router.get('/filter/greater/:year', filterCarsByYearGreater);
+router.get('/filter/less/:year', filterCarsByYearLess);
+router.get('/filter/between/:year1/:year2', filterCarsByYearBetween);
+
+export default router;

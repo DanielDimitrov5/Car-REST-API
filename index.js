@@ -1,6 +1,6 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const carController = require('./controllers/CarController');
+import express from 'express';
+import mongoose from 'mongoose';
+import carController from './controllers/CarController.js';
 
 const start = async () => {
     try {
