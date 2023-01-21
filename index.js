@@ -4,7 +4,7 @@ import carController from './controllers/CarController.js';
 
 const start = async () => {
     try {
-        await mongoose.connect(`mongodb+srv://danieldimitrov:mumia550303@cluster0.6sxrvdm.mongodb.net/test`, {
+        await mongoose.connect('mongodb://localhost:27017/cars', {
             useUnifiedTopology: true,
             useNewUrlParser: true
         });
@@ -34,7 +34,7 @@ const start = async () => {
         });
     });
 
-    app.listen(process.env.PORT || 3000, () => console.log('REST service started on port 3000'));
+    app.listen(3000, () => console.log('REST service started on port 3000'));
 }
 
 start();
