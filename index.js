@@ -1,6 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import carController from './controllers/CarController.js';
+import userController from './controllers/UserController.js';
+import cors from './middlewares/Cors.js';
 
 const start = async () => {
     try {
@@ -15,10 +17,13 @@ const start = async () => {
     }
 
     const app = express();
-
+    
     app.use(express.json());
+    app.use(cors());
+
 
     app.use('/cars', carController);
+    app.use('/users', userController);
 
     app.use('/', (req, res) => {
         res.json({ 

@@ -1,6 +1,8 @@
 import Car from '../models/Car.js';
 import { Router } from 'express';
 import _ from 'lodash';
+import auth from '../middlewares/Auth.js';
+
 
 const router = Router();
 
@@ -78,7 +80,7 @@ const filterCarsByYearGreater = async (req, res) => {
         res.json({ message: 'Cars not found', error: err });
     }
 };
-    
+
 const filterCarsByYearLess = async (req, res) => {
     const { year } = req.params;
     try {
